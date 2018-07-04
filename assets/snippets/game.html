@@ -1,7 +1,34 @@
+<!-- Score display -->
+<div class="row z-depth-2" id="score-display">
+    <!-- Score -->
+    <!-- <table class="centered z-depth-2">
+        <thead>
+            <tr>
+                <th>Player 1</th>
+                <th>Player 2</th>
+                <th>Ties</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="p1wins"></td>
+                <td id="p2wins"></td>
+                <td id="ties"></td>
+            </tr>
+        </tbody>
+    </table> -->
+    <div class="col s4 score-col" id="scorecol-p1">
+        <b>Player 1 </b> <br> <span id="p1wins"></span></div>
+    <div class="col s4 score-col" id="scorecol-p2">
+        <b>Player 2 </b> <br> <span id="p2wins"></span></div>
+    <div class="col s4 score-col" id="scorecol-ties">
+        <b>Ties </b> <br> <span id="ties"></span></div>
+</div>
+
 <div class="row">
     <!-- Player 1 column -->
-    <div class="col s6">
-        <h2 class="center">Player 1</h2>
+    <div class="col s6 player-column">
+        <h2 class="center" id="player1name">Player 1</h2>
         <div class="center playerchoice" id="player1choice">Choose your weapon</div>
         <div class="buttons-div center" id="buttons-player1" data-player="one">
             <button class="btn-large waves-effect waves-light light-green rps-button" data="rock"><i class="fas fa-hand-rock"></i></button>
@@ -10,8 +37,8 @@
         </div>
     </div>
     <!-- Player 2 column -->
-    <div class="col s6">
-        <h2 class="center">Player 2</h2>
+    <div class="col s6 player-column">
+        <h2 class="center" id="player2name">Player 2</h2>
         <div class="center playerchoice" id="player2choice">Choose your weapon</div>
         <div class="buttons-div center" id="buttons-player2" data-player="two">
             <button class="btn-large waves-effect waves-light purple lighten-2 rps-button" data="rock"><i class="fas fa-hand-rock"></i></button>

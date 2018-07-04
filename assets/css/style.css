@@ -23,6 +23,34 @@
     width: 100%;
 }
 
+#player1name {
+    color: #8bc34a;
+}
+#player2name {
+    color: purple;
+}
+
+#score-display {
+    /* width: fit-content; */
+    /* width: 320px; */
+    /* width: 400px; */
+    width: 240px;
+    /* width: 100%; */
+    color: white;
+    background-color: rgb(255, 60, 60);
+    text-align: center;
+}
+.score-col {
+    /* background-color: rgb(255, 60, 60); */
+}
+#score-display span {
+    /* text-align: center; */
+    /* text-align: right; */
+    color: white;
+}
+
+
+/* For smartphones */
 @media only screen and (orientation: portrait) {
     #content {
         width: 98%;
@@ -39,5 +67,15 @@
         padding: 0;
         line-height: 40px;
         margin: 3px;
+    }
+
+    #player1name, #player2name {
+        font-size: 44px;
+    }
+
+    #game-results {
+        font-size: 20px;
+        height: 70px;
+        line-height: 35px;
     }
 }

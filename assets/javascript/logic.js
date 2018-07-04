@@ -47,9 +47,21 @@ rpsRef.on('value', function(snap) {
         // Remove the player from the database upon disconnect.
         var updateObj = {};
         updateObj[currentPlayer] = null;
+        updateObj['reset'] = true;
+        console.log('upon disconnect', updateObj);
         rpsRef.onDisconnect().update(updateObj);
     }
     console.log('current player', currentPlayer);
+
+    // If winCount exists, load it
+    if (snap.child('winCount').exists()) {
+        winCount = snap.val().winCount;
+
+        // Update score display
+        $('#p1wins').text(winCount.one);
+        $('#p2wins').text(winCount.two);
+        $('#ties').text(winCount.tie);
+    }
 
     // If we need to reset some stuff
     if (snap.child('reset').exists()) {
@@ -69,7 +81,7 @@ rpsRef.on('value', function(snap) {
     else if (currentPlayer === 'two') cpstring = 1;
     console.log('cpstring', cpstring);
     if (!snap.child('oneChoice').exists() || !snap.child('twoChoice').exists()) {
-        $('.col:nth-child(' + cpstring + ')').css({'opacity': 0.3});
+        $('.player-column:nth-child(' + cpstring + ')').css({'opacity': 0.3});
     }
 
     // If both players' choices are in the database, 
@@ -90,10 +102,6 @@ rpsRef.on('value', function(snap) {
         // Calculate and display winner
         calculateWinner();
         displayWinner();
-    }
-
-    if (snap.child('winCount').exists()) {
-        winCount = snap.val().winCount;
     }
 });
 
@@ -125,6 +133,7 @@ $(document).on('click', '.rps-button', function() {
 
     playerChoice[player] = choice;
 
+    // Update Firebase with the player's choice
     var updateObj = {};
     updateObj[player + 'Choice'] = choice;
     rpsRef.update(updateObj);
@@ -221,14 +230,16 @@ $(document).on('click', '#restartButton', function() {
     if (!currentPlayer) return;
     
     rpsRef.update({
-        oneChoice: null,
-        twoChoice: null,
         reset: true
     });
 })
 
 function reset() {
     playerChoice = {};
+    rpsRef.update({
+        oneChoice: null,
+        twoChoice: null
+    })
     $('#game-results').empty();
     $('.playerchoice').html("Choose your weapon");
     winner = null;
