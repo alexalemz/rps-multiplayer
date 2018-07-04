@@ -217,6 +217,9 @@ function displayChoice(player) {
 
 // When restart button is clicked...
 $(document).on('click', '#restartButton', function() {
+    // Make sure only a player can reset the game
+    if (!currentPlayer) return;
+    
     rpsRef.update({
         oneChoice: null,
         twoChoice: null,
