@@ -56,12 +56,11 @@ rpsRef.on('value', function(snap) {
     // If winCount exists, load it
     if (snap.child('winCount').exists()) {
         winCount = snap.val().winCount;
-
-        // Update score display
-        $('#p1wins').text(winCount.one);
-        $('#p2wins').text(winCount.two);
-        $('#ties').text(winCount.tie);
     }
+    // Update score display
+    $('#p1wins').text(winCount.one);
+    $('#p2wins').text(winCount.two);
+    $('#ties').text(winCount.tie);
 
     // If we need to reset some stuff
     if (snap.child('reset').exists()) {

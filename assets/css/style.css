@@ -27,7 +27,7 @@
     color: #8bc34a;
 }
 #player2name {
-    color: purple;
+    color: #ba68c8;
 }
 
 #score-display {
@@ -70,7 +70,8 @@
     }
 
     #player1name, #player2name {
-        font-size: 44px;
+        font-size: 40px;
+        margin-top: 0;
     }
 
     #game-results {
@@ -78,4 +79,14 @@
         height: 70px;
         line-height: 35px;
     }
+
+    #playercolumnsrow {
+        /* height: 220px; */
+        /* margin-top: 0; */
+    }
+    
+    .player-column {
+        /* height: fit-content; */
+    }
+
 }
